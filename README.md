@@ -16,6 +16,7 @@ A http/https proxy using [QUIC](https://www.chromium.org/quic) as transport laye
 
 ## Installation & Usage
 
+**Note**: require go version >= 1.9
 
 ### Install `qpserver` on your remote server
 
