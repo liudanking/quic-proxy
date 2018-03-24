@@ -10,6 +10,8 @@ A http/https proxy using [QUIC](https://www.chromium.org/quic) as transport laye
 * FEC
 * Connection migration
 
+Implementation detail: [A http proxy based on QUIC in 100 lines](https://liudanking.com/beautiful-life/100%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%9F%BA%E4%BA%8E-quic-%E7%9A%84-http-%E4%BB%A3%E7%90%86/).
+
 ## Architecture 
 
 ![](https://ws1.sinaimg.cn/large/44cd29dagy1fpn4yaf2p8j20nd079aae.jpg)
