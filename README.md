@@ -26,7 +26,7 @@ Implementation detail: [A http proxy based on QUIC in 100 lines](https://liudank
 
 ### Start `qpserver`:
 
-`qpserver -v -l :3443 -cert YOUR_CERT_FILA_PATH -key YOUR_KEY_FILE_PATH`
+`qpserver -v -l :3443 -cert YOUR_CERT_FILA_PATH -key YOUR_KEY_FILE_PATH -auth username:password`
 
 ### Install `qpclient` on your local machine
 
@@ -34,7 +34,7 @@ Implementation detail: [A http proxy based on QUIC in 100 lines](https://liudank
 
 ### Start `qpclient`:
 
-`qpclient -v -k -proxy http://YOUR_REMOTE_SERVER:3443 -l 127.0.0.1:18080`
+`qpclient -v -k -proxy http://YOUR_REMOTE_SERVER:3443 -l 127.0.0.1:18080 -auth username:password`
 
 ### Set proxy for your application on your local machine
 
@@ -47,4 +47,4 @@ Enjoy!
 ## TODO
 
 * Using custom congestion control
-* Basic Authentication
+

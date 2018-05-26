@@ -1,9 +1,14 @@
-SERVICE := client
-VERSION := 0.0.1
+SERVICE := qpclient
+VERSION := 0.0.2
 
 
-run: 
-	go run main.go -v -k -proxy http://localhost:3443 -l :18080
+build:
+	@echo "building..." && \
+	go install && \
+	echo "build done"
+
+run: build 
+	$(SERVICE) -v -k -proxy http://localhost:3443 -l :18080
 
 
 
