@@ -16,7 +16,7 @@ branch := `git rev-parse --abbrev-ref HEAD`
 deploy:
 	@echo "deploy remote server..." && \
 	git push origin HEAD && \
-	sl-vultr-la "source /etc/profile && cd /usr/local/gopath/src/backend/$(SERVICE) &&  git pull && git checkout $(branch) && \
+	sl-vultr-la "source /etc/profile && cd /go/src/github.com/liudanking/quic-proxy/pqserver &&  git pull && git checkout $(branch) && \
 	git branch && make && supervisorctl restart $(SERVICE)" && \
 	echo "deploy done"
 	

@@ -52,6 +52,7 @@ func Basic(f func(user, passwd string) bool) goproxy.ReqHandler {
 			log.Warning("basic auth verify for normal request failed")
 			return nil, BasicUnauthorized(req)
 		}
+		req.Header.Del(common.ProxyAuthHeader)
 		return req, nil
 	})
 }
@@ -66,6 +67,7 @@ func BasicConnect(f func(user, passwd string) bool) goproxy.HttpsHandler {
 			ctx.Resp = BasicUnauthorized(ctx.Req)
 			return goproxy.RejectConnect, host
 		}
+		ctx.Req.Header.Del(common.ProxyAuthHeader)
 		return goproxy.OkConnect, host
 	})
 }
