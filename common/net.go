@@ -42,7 +42,7 @@ func (ql *QuicListener) doAccept() {
 			for {
 				stream, err := sess.AcceptStream()
 				if err != nil {
-					log.Error("accept stream failed:%v", err)
+					log.Notice("accept stream failed:%v", err)
 					sess.Close(err)
 					return
 				}

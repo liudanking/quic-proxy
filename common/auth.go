@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	ProxyAuthHeader = "Proxy-Authorization"
+	ProxyAuthHeader = "Quic-Proxy-Authorization"
 )
 
 func SetBasicAuth(username, password string, req *http.Request) {
