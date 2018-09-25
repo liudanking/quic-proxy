@@ -50,5 +50,5 @@ Enjoy!
 
 ## Wechat Group
 
-<img src="https://ws1.sinaimg.cn/large/44cd29dagy1fujd6nifchj20kw0r2778.jpg" width="320px"/>
+<img src="https://ws1.sinaimg.cn/large/44cd29dagy1fvm0fcf74uj20kw0r2tbq.jpg" width="320px"/>
 
