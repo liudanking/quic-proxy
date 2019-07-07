@@ -48,7 +48,9 @@ Enjoy!
 
 * Using custom congestion control
 
-## Wechat Group
+## Join Wechat Group
 
-<img src="https://ws1.sinaimg.cn/large/44cd29dagy1fvm0fcf74uj20kw0r2tbq.jpg" width="320px"/>
+Add the Wechat robot to join group:
+
+<img src="https://raw.githubusercontent.com/liudanking/quic-proxy/master/wx-bot.jpg" width="320px"/>
 
