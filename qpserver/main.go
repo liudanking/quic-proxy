@@ -65,5 +65,8 @@ func generateTLSConfig(certFile, keyFile string) *tls.Config {
 	if err != nil {
 		panic(err)
 	}
-	return &tls.Config{Certificates: []tls.Certificate{tlsCert}}
+	return &tls.Config{
+		Certificates: []tls.Certificate{tlsCert},
+		NextProtos:   []string{common.KQuicProxy},
+	}
 }

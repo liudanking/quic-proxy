@@ -11,6 +11,10 @@ import (
 	quic "github.com/lucas-clemente/quic-go"
 )
 
+const (
+	KQuicProxy = "quic-proxy"
+)
+
 type QuicListener struct {
 	quic.Listener
 	chAcceptConn chan *AcceptConn
@@ -92,7 +96,10 @@ func (qd *QuicDialer) Dial(network, addr string) (net.Conn, error) {
 	defer qd.Unlock()
 
 	if qd.sess == nil {
-		sess, err := quic.DialAddr(addr, &tls.Config{InsecureSkipVerify: qd.skipCertVerify}, nil)
+		sess, err := quic.DialAddr(addr, &tls.Config{
+			InsecureSkipVerify: qd.skipCertVerify,
+			NextProtos:         []string{KQuicProxy},
+		}, nil)
 		if err != nil {
 			log.Error("dial session failed:%v", err)
 			return nil, err
@@ -104,7 +111,10 @@ func (qd *QuicDialer) Dial(network, addr string) (net.Conn, error) {
 	if err != nil {
 		log.Info("[1/2] open stream from session no success:%v, try to open new session", err)
 		qd.sess.Close()
-		sess, err := quic.DialAddr(addr, &tls.Config{InsecureSkipVerify: true}, nil)
+		sess, err := quic.DialAddr(addr, &tls.Config{
+			InsecureSkipVerify: true,
+			NextProtos:         []string{KQuicProxy},
+		}, nil)
 		if err != nil {
 			log.Error("[2/2] dial new session failed:%v", err)
 			return nil, err
