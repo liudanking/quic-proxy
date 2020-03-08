@@ -18,7 +18,7 @@ Implementation detail: [A http proxy based on QUIC in 100 lines](https://liudank
 
 ## Installation & Usage
 
-**Note**: require go version >= 1.9
+**Note**: require go version >= 1.14
 
 ### Install `qpserver` on your remote server
 
