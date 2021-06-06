@@ -6,6 +6,8 @@ import (
 	"net/url"
 	"strings"
 
+	_ "net/http/pprof"
+
 	"github.com/elazarl/goproxy"
 	log "github.com/liudanking/goutil/logutil"
 	"github.com/liudanking/quic-proxy/common"
@@ -20,6 +22,7 @@ func main() {
 		skipCertVerify bool
 		auth           string
 		verbose        bool
+		pprofile       bool
 	)
 
 	flag.StringVar(&listenAddr, "l", ":18080", "listenAddr")
@@ -27,10 +30,17 @@ func main() {
 	flag.BoolVar(&skipCertVerify, "k", false, "skip Cert Verify")
 	flag.StringVar(&auth, "auth", "quic-proxy:Go!", "basic auth, format: username:password")
 	flag.BoolVar(&verbose, "v", false, "verbose")
+	flag.BoolVar(&pprofile, "p", false, "http pprof")
 	flag.Parse()
 
 	proxy := goproxy.NewProxyHttpServer()
 	proxy.Verbose = verbose
+
+	if pprofile {
+		pprofAddr := "localhost:6061"
+		log.Notice("listen pprof:%s", pprofAddr)
+		go http.ListenAndServe(pprofAddr, nil)
+	}
 
 	Url, err := url.Parse(proxyUrl)
 	if err != nil {

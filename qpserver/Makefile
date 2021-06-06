@@ -7,7 +7,7 @@ build:
 	echo "build done"
 
 run: build 
-	$(SERVICE) -v -l :3443 -cert '../cert/cert.pem' -key '../cert/domain.key'
+	$(SERVICE) -v -p -l :3443 -cert '../cert/cert.pem' -key '../cert/domain.key'
 
 
 

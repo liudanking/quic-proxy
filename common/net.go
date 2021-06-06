@@ -28,7 +28,7 @@ type AcceptConn struct {
 func NewQuicListener(l quic.Listener) *QuicListener {
 	ql := &QuicListener{
 		Listener:     l,
-		chAcceptConn: make(chan *AcceptConn, 1),
+		chAcceptConn: make(chan *AcceptConn, 4),
 	}
 	go ql.doAccept()
 	return ql

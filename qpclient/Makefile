@@ -8,7 +8,7 @@ build:
 	echo "build done"
 
 run: build 
-	$(SERVICE) -v -k -proxy http://localhost:3443 -l :18080
+	$(SERVICE) -v -p -k -proxy http://localhost:3443 -l :18080
 
 
 

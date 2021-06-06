@@ -10,6 +10,8 @@ import (
 
 	"flag"
 
+	_ "net/http/pprof"
+
 	log "github.com/liudanking/goutil/logutil"
 	"github.com/liudanking/quic-proxy/common"
 )
@@ -21,18 +23,26 @@ func main() {
 		key        string
 		auth       string
 		verbose    bool
+		pprofile   bool
 	)
 	flag.StringVar(&listenAddr, "l", ":443", "listen addr (udp port only)")
 	flag.StringVar(&cert, "cert", "", "cert path")
 	flag.StringVar(&key, "key", "", "key path")
 	flag.StringVar(&auth, "auth", "quic-proxy:Go!", "basic auth, format: username:password")
 	flag.BoolVar(&verbose, "v", false, "verbose")
+	flag.BoolVar(&pprofile, "p", false, "http pprof")
 	flag.Parse()
 
 	log.Info("%v", verbose)
 	if cert == "" || key == "" {
 		log.Error("cert and key can't by empty")
 		return
+	}
+
+	if pprofile {
+		pprofAddr := "localhost:6060"
+		log.Notice("listen pprof:%s", pprofAddr)
+		go http.ListenAndServe(pprofAddr, nil)
 	}
 
 	parts := strings.Split(auth, ":")
